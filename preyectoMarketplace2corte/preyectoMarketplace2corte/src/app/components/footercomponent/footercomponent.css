@@ -1,0 +1,10 @@
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+footer a:hover {
+  color: #ffffff !important;
+  transition: color 0.2s ease-in-out;
+}
