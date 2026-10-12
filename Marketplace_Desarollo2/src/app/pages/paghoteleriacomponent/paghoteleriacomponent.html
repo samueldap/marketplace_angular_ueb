@@ -1,0 +1,161 @@
+<!-- Hero Principal de Alojamientos con Imagen a Pantalla Completa --><header class="exp-hero position-relative d-flex align-items-end overflow-hidden text-white">
+  <img class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Alojamiento de lujo"
+       src="https://images.unsplash.com/photo-1566073771259-6a8506099945?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=2000">
+  <div class="exp-hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+
+  <div class="container position-relative exp-hero-contenido">
+    <div class="row align-items-end g-4 g-lg-5">
+
+      <div class="col-lg-8">
+        <p class="exp-eyebrow d-flex align-items-center gap-2 mb-4"><i class="bi bi-house-heart"></i>SELECCIONADOS UNO A UNO</p>
+        <h1 class="exp-hero-titulo mb-0">Alojamientos para descubrir sin prisa.</h1>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="exp-hero-lateral">
+          <p class="mb-0">Casas especiales, anfitriones cercanos y rincones que merece la pena conocer. Seleccionados detalladamente para tu estancia.</p>
+          <button type="button" class="exp-link mt-4" (click)="irAAlojamientos()">Explorar alojamientos <i class="bi bi-arrow-down ms-2"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<section id="alojamientos" class="exp-seccion py-5">
+  <div class="container py-lg-4">
+
+    <div class="exp-cabecera d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 pb-4 mb-4">
+      <div>
+        <p class="exp-etiqueta mb-2">DIRECTORIO EXCLUSIVO</p>
+        <h2 class="exp-titulo mb-0">Hotelería y Alojamientos</h2>
+      </div>
+
+      <button type="button" class="crud-btn-add text-nowrap" data-bs-toggle="modal" data-bs-target="#modalAlojamiento" (click)="abrirFormulario()">
+        <i class="bi bi-plus-circle me-1"></i> AÑADIR ALOJAMIENTO
+      </button>
+    </div>
+
+
+    <div *ngIf="mensaje" class="alert alert-success" role="status">{{ mensaje }}</div>
+    <div *ngIf="cargando" class="text-center text-muted py-5" role="status">Cargando alojamientos...</div>
+    <div *ngIf="errorCarga" class="alert alert-warning" role="alert">{{ errorCarga }}</div>
+
+    <div class="row g-4 gy-5 mt-0" *ngIf="!cargando && alojamientos.length">
+      <div class="col-12 col-md-6 col-lg-4" *ngFor="let a of alojamientos">
+        <article class="exp-card position-relative h-100">
+          <div class="exp-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" [src]="a.imagenPrincipal" [alt]="a.nombre" loading="lazy">
+            <span class="exp-categoria">{{ a.tipo }}</span>
+          </div>
+
+          <div class="exp-card-body pt-3 pb-2">
+            <div class="exp-meta d-flex align-items-center gap-3 mb-2">
+              <span><i class="bi bi-geo-alt me-1"></i>{{ a.ciudad }} • {{ a.ubicacion }}</span>
+              <span class="fw-bold"><i class="bi bi-star-fill text-warning me-1"></i>{{ a.calificacion || 'Nuevo' }}</span>
+            </div>
+
+            <h5 class="exp-card-titulo fw-bold mb-2">{{ a.nombre }}</h5>
+            <p class="exp-card-descripcion mb-3">{{ a.descripcion }}</p>
+
+            <div class="exp-card-pie d-flex justify-content-between align-items-center pt-3 border-top">
+              <div>
+                <span class="fw-bold fs-5 text-dark">{{ precio(a.precioNoche) }}</span>
+                <span class="text-muted small"> / noche</span>
+              </div>
+              <a class="btn btn-dark btn-sm rounded-pill px-3 fw-bold" [routerLink]="['/alojamientos', a.id]">
+                <i class="bi bi-calendar-check me-1"></i> Ver y reservar
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div *ngIf="!cargando && !errorCarga && !alojamientos.length" class="text-center text-muted py-5">
+      Aún no hay alojamientos. Usa «Añadir alojamiento» para publicar el primero.
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="modalAlojamiento" tabindex="-1" aria-hidden="true" aria-labelledby="tituloModalAlojamiento">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+    <div class="modal-content border-0 p-4 rounded-4">
+      <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+        <h5 id="tituloModalAlojamiento" class="fw-bold m-0 text-dark" style="font-family: 'Playfair Display', serif;">Añadir alojamiento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <form #f="ngForm" (ngSubmit)="guardar()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="al-nombre" class="form-label small fw-bold text-muted text-uppercase">Título *</label>
+            <input id="al-nombre" name="nombre" type="text" class="form-control" placeholder="Ej. Loft moderno en Chapinero" required [(ngModel)]="form.nombre" />
+          </div>
+          <div class="col-md-6">
+            <label for="al-tipo" class="form-label small fw-bold text-muted text-uppercase">Tipo de alojamiento</label>
+            <select id="al-tipo" name="tipo" class="form-select" [(ngModel)]="form.tipo">
+              <option *ngFor="let t of tipos" [value]="t">{{ t }}</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="al-ciudad" class="form-label small fw-bold text-muted text-uppercase">Ciudad *</label>
+            <input id="al-ciudad" name="ciudad" type="text" class="form-control" placeholder="Ej. Medellín" required [(ngModel)]="form.ciudad" />
+          </div>
+          <div class="col-md-6">
+            <label for="al-ubicacion" class="form-label small fw-bold text-muted text-uppercase">Ubicación *</label>
+            <input id="al-ubicacion" name="ubicacion" type="text" class="form-control" placeholder="Ej. El Poblado, Medellín" required [(ngModel)]="form.ubicacion" />
+          </div>
+          <div class="col-12">
+            <label for="al-descripcion" class="form-label small fw-bold text-muted text-uppercase">Descripción *</label>
+            <textarea id="al-descripcion" name="descripcion" rows="3" class="form-control" required [(ngModel)]="form.descripcion"></textarea>
+          </div>
+          <div class="col-6 col-md-3">
+            <label for="al-capacidad" class="form-label small fw-bold text-muted text-uppercase">Huéspedes</label>
+            <input id="al-capacidad" name="capacidad" type="number" min="1" step="1" class="form-control" required [(ngModel)]="form.capacidad" />
+          </div>
+          <div class="col-6 col-md-3">
+            <label for="al-habitaciones" class="form-label small fw-bold text-muted text-uppercase">Habitaciones</label>
+            <input id="al-habitaciones" name="habitaciones" type="number" min="0" step="1" class="form-control" required [(ngModel)]="form.habitaciones" />
+          </div>
+          <div class="col-6 col-md-3">
+            <label for="al-camas" class="form-label small fw-bold text-muted text-uppercase">Camas</label>
+            <input id="al-camas" name="camas" type="number" min="1" step="1" class="form-control" required [(ngModel)]="form.camas" />
+          </div>
+          <div class="col-6 col-md-3">
+            <label for="al-banos" class="form-label small fw-bold text-muted text-uppercase">Baños</label>
+            <input id="al-banos" name="banos" type="number" min="1" step="1" class="form-control" required [(ngModel)]="form.banos" />
+          </div>
+          <div class="col-md-6">
+            <label for="al-precio" class="form-label small fw-bold text-muted text-uppercase">Precio por noche (COP) *</label>
+            <input id="al-precio" name="precioNoche" type="number" min="1" class="form-control" required [(ngModel)]="form.precioNoche" />
+          </div>
+          <div class="col-md-6">
+            <label for="al-limpieza" class="form-label small fw-bold text-muted text-uppercase">Tarifa de limpieza (COP)</label>
+            <input id="al-limpieza" name="tarifaLimpieza" type="number" min="0" class="form-control" required [(ngModel)]="form.tarifaLimpieza" />
+          </div>
+          <div class="col-12">
+            <label for="al-imagen" class="form-label small fw-bold text-muted text-uppercase">URL de la imagen principal *</label>
+            <input id="al-imagen" name="imagenPrincipal" type="url" class="form-control" placeholder="https://..." required [(ngModel)]="form.imagenPrincipal" />
+          </div>
+          <div class="col-12">
+            <label for="al-imagenes" class="form-label small fw-bold text-muted text-uppercase">Otras imágenes (URLs separadas por coma)</label>
+            <input id="al-imagenes" name="imagenes" type="text" class="form-control" placeholder="https://..., https://..." [(ngModel)]="imagenesTexto" />
+          </div>
+          <div class="col-md-6">
+            <label for="al-servicios" class="form-label small fw-bold text-muted text-uppercase">Servicios (separados por coma)</label>
+            <input id="al-servicios" name="servicios" type="text" class="form-control" [(ngModel)]="serviciosTexto" />
+          </div>
+          <div class="col-md-6">
+            <label for="al-reglas" class="form-label small fw-bold text-muted text-uppercase">Reglas (separadas por coma)</label>
+            <input id="al-reglas" name="reglas" type="text" class="form-control" [(ngModel)]="reglasTexto" />
+          </div>
+        </div>
+
+        <p *ngIf="error" class="text-danger small mt-3 mb-0" role="alert">{{ error }}</p>
+        <button type="submit" class="crud-btn-add w-100 mt-3" [disabled]="f.invalid || guardando">
+          {{ guardando ? 'Guardando...' : 'Guardar alojamiento' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

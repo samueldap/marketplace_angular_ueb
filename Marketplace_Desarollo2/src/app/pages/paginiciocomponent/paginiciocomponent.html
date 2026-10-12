@@ -1,0 +1,32 @@
+<app-bannercomponent></app-bannercomponent>
+<app-destinoscomponent></app-destinoscomponent>
+<app-experienciascomponent></app-experienciascomponent>
+
+<section class="container section" aria-labelledby="alojamientos-destacados">
+  <div class="section-heading">
+    <div>
+      <span class="eyebrow">Lugares para descubrir</span>
+      <h2 id="alojamientos-destacados">Alojamientos destacados</h2>
+      <p class="muted">Opciones seleccionadas por su calificación.</p>
+    </div>
+    <a class="button secondary" routerLink="/alojamientos">Ver catálogo completo</a>
+  </div>
+
+  <div *ngIf="cargandoAlojamientos" class="loading" role="status">Cargando alojamientos...</div>
+  <p *ngIf="errorAlojamientos" class="notice" role="alert">{{ errorAlojamientos }}</p>
+  <div class="grid" *ngIf="!cargandoAlojamientos && destacados.length > 0">
+    <a class="card" *ngFor="let alojamiento of destacados" [routerLink]="['/alojamientos', alojamiento.id]">
+      <img [src]="alojamiento.imagenPrincipal" [alt]="alojamiento.nombre" loading="lazy">
+      <div class="card-body">
+        <div class="card-meta"><span>📍 {{ alojamiento.ciudad }}</span><span>★ {{ alojamiento.calificacion || 'Nuevo' }}</span></div>
+        <h3>{{ alojamiento.nombre }}</h3>
+        <p class="muted">{{ alojamiento.tipo }} · {{ alojamiento.capacidad }} huésped(es)</p>
+        <p class="price">{{ precio(alojamiento.precioNoche) }} <small>/ noche</small></p>
+      </div>
+    </a>
+  </div>
+  <div *ngIf="!cargandoAlojamientos && !errorAlojamientos && destacados.length === 0" class="empty">
+    <h3>Aún no hay alojamientos disponibles</h3>
+    <p class="muted">Vuelve a consultar más tarde.</p>
+  </div>
+</section>

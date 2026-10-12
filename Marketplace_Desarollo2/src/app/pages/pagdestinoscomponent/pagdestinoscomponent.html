@@ -1,0 +1,113 @@
+<header class="exp-hero position-relative d-flex align-items-end overflow-hidden text-white">
+  <img class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Paisaje de destino"
+       src="https://images.unsplash.com/photo-1583997052301-004d88e73a4a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=2000">
+  <div class="exp-hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+
+  <div class="container position-relative exp-hero-contenido">
+    <div class="row align-items-end g-4 g-lg-5">
+
+      <div class="col-lg-8">
+        <p class="exp-eyebrow d-flex align-items-center gap-2 mb-4"><i class="bi bi-compass"></i>Territorios inolvidables</p>
+        <h1 class="exp-hero-titulo mb-0">Destinos que inspiran tu viaje.</h1>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="exp-hero-lateral">
+          <p class="mb-0">Explora las regiones más fascinantes. Rincones con historia, paisajes naturales y pueblos llenos de encanto seleccionados para ti.</p>
+          <button type="button" class="exp-link mt-4" (click)="irADestinos()">Explorar destinos <i
+            class="bi bi-arrow-down ms-2"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="destinos" class="exp-seccion py-5">
+  <div class="container py-lg-4">
+
+    <div class="exp-cabecera d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-4 pb-4">
+      <div>
+        <p class="exp-etiqueta mb-2">Elige tu próximo rumbo</p>
+        <h2 class="exp-titulo mb-0">Lugares por descubrir</h2>
+      </div>
+
+      <div class="exp-filtros d-flex gap-2">
+        @for (cat of categorias; track cat) {
+          <button type="button" class="exp-filtro" [class.activo]="categoria === cat"
+                  (click)="filtrar(cat)">{{ cat }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="row g-4 gy-5 mt-0">
+      @for (dest of destinosVisibles; track dest.id; let i = $index) {
+        <div class="col-12" [class.col-lg-8]="esDestacada(i)" [class.col-md-6]="!esDestacada(i)"
+             [class.col-lg-4]="!esDestacada(i)">
+
+          <article class="exp-card">
+            <div class="exp-foto position-relative overflow-hidden" [class.exp-foto-grnade]="esDestacada(i)">
+              <img class="w-100 h-100 object-fit-cover" [src]="dest.imagen" [alt]="dest.titulo">
+              <span class="exp-categoria">{{ dest.categoria }}</span>
+
+              <button type="button" class="exp-fav" [class.guardada]="estaGuardada(dest.id)"
+                      [attr.aria-label]="estaGuardada(dest.id) ? 'Quitar de favoritos' : 'Guardar en favoritos'"
+                      (click)="alternarGuardada(dest.id)">
+                <i class="bi" [class.bi-heart]="!estaGuardada(dest.id)"
+                   [class.bi-heart-fill]="estaGuardada(dest.id)"></i>
+              </button>
+
+              @if (esDestacada(i)) {
+                <span class="exp-favorita">Destino Top</span>
+              }
+            </div>
+
+            <div class="pt-4">
+              <div class="exp-meta d-flex align-items-center gap-4 mb-3">
+                <span><i class="bi bi-sun me-2"></i>{{ dest.duracion }}</span>
+                <span><i class="bi bi-house-door me-2"></i>{{ dest.personas }}</span>
+              </div>
+
+              <h5 class="card-title fw-bold mb-2">{{ dest.titulo }}</h5>
+              <p class="text-muted small mb-0">{{ dest.descripcion }}</p>
+
+              <div class="exp-card-pie d-flex justify-content-between align-items-center mt-4 pt-3">
+                <span class="fw-bold text-dark">{{ dest.precio }}</span>
+                <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3">Ver destino</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-4 py-lg-5">
+  <div class="container">
+    <div class="exp-medida row g-0 overflow-hidden text-white">
+
+      <div class="exp-medida-foto col-lg-6">
+        <img alt="Camino en la montaña"
+             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1200">
+      </div>
+
+      <div class="col-lg-6 d-flex flex-column justify-content-center p-4 p-md-5">
+        <p class="exp-medida-etiqueta mb-3">Rutas a tu medida</p>
+        <h2 class="exp-medida-titulo">¿No sabes qué territorio elegir?</h2>
+        <p class="exp-medida-texto mt-3 mb-0">Diseñamos itinerarios multidestino adaptados a tu ritmo. Te asesoramos para combinar la tranquilidad de la naturaleza con los mejores pueblos culturales.</p>
+        <a routerLink="/contacto" class="exp-medida-link mt-4">Habla con nuestro equipo <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="exp-cta text-center py-5">
+  <div class="container py-lg-4">
+    <i class="bi bi-compass exp-cta-icono"></i>
+    <h2 class="exp-cta-titulo mt-3">Tu viaje perfecto empieza aquí.</h2>
+    <p class="exp-cta-texto mx-auto mt-3 mb-0">Elige tu destino favorito y reserva los alojamientos más exclusivos en la región.</p>
+    <a routerLink="/alojamientos" class="exp-boton mt-4">Ver alojamientos <i class="bi bi-arrow-right"></i></a>
+  </div>
+</section>

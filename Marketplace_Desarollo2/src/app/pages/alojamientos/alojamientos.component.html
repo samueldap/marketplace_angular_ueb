@@ -1,0 +1,10 @@
+<div class="container section"><div class="section-heading"><div><span class="eyebrow">Explora y compara</span><h1>Encuentra tu alojamiento</h1><p class="muted">Filtra las opciones para encontrar la estadía ideal.</p></div></div>
+<div class="panel"><div class="filters"><div class="field"><label for="ciudad">Ciudad</label><select id="ciudad" [(ngModel)]="ciudad"><option value="">Todas las ciudades</option><option *ngFor="let c of ciudades" [value]="c">{{c}}</option></select></div>
+<div class="field"><label for="tipo">Tipo de alojamiento</label><select id="tipo" [(ngModel)]="tipo"><option value="">Todos los tipos</option><option *ngFor="let t of tipos" [value]="t">{{t}}</option></select></div>
+<div class="field"><label for="huespedes">Huéspedes</label><input id="huespedes" type="number" min="1" placeholder="Cualquier cantidad" [(ngModel)]="huespedes"></div>
+<div class="field"><label for="precioMaximo">Precio máximo por noche (COP)</label><input id="precioMaximo" type="number" min="1" placeholder="Sin límite" [(ngModel)]="precioMaximo"></div>
+<button type="button" class="secondary" (click)="limpiar()">Limpiar</button><span class="muted">{{filtrados.length}} resultado(s)</span></div></div>
+<div *ngIf="cargando" class="loading">Cargando alojamientos...</div><div *ngIf="error" class="notice">{{error}}</div>
+<div class="grid listing-grid" *ngIf="!cargando&&filtrados.length"><a class="card" *ngFor="let a of filtrados" [routerLink]="['/alojamientos',a.id]">
+<img [src]="a.imagenPrincipal" [alt]="a.nombre" loading="lazy"><div class="card-body"><div class="card-meta"><span>📍 {{a.ciudad}}</span><span>★ {{a.calificacion||'Nuevo'}}</span></div><h3>{{a.nombre}}</h3><p class="muted">{{a.tipo}} · {{a.capacidad}} huéspedes</p><p class="muted">{{a.servicios.slice(0,3).join(' · ')}}</p><p class="price">{{precio(a.precioNoche)}} <small>/ noche</small></p></div></a></div>
+<div *ngIf="!cargando&&!error&&filtrados.length===0" class="empty"><h2>No encontramos alojamientos</h2><p class="muted">Prueba con otros filtros o limpia la búsqueda.</p><button (click)="limpiar()">Limpiar filtros</button></div></div>

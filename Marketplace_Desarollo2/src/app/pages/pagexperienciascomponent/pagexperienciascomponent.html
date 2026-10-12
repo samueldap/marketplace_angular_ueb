@@ -1,0 +1,122 @@
+<header class="exp-hero position-relative d-flex align-items-end overflow-hidden text-white">
+  <img class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Velero navegando"
+       src="https://images.unsplash.com/photo-1627024216712-ccc7921250b6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=2000">
+  <div class="exp-hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+
+  <div class="container position-relative exp-hero-contenido">
+    <div class="row align-items-end g-4 g-lg-5">
+
+      <div class="col-lg-8">
+        <p class="exp-eyebrow d-flex align-items-center gap-2 mb-4"><i class="bi bi-starts"></i>Más allá de dormir</p>
+        <h1 class="exp-hero-titulo mb-0">Experiencias que se quedan contigo.</h1>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="exp-hero-lateral">
+          <p class="mb-0">Descubre el territorio a través de quienes mejor lo conocen. Momentos auténticos,
+            cuidadosamente seleccionados para tu estancia</p>
+          <button type="button" class="exp-link mt-4" (click)="irAExperiencias()">Explorar experiencias <i
+            class="bi bi-arrow-down ms-2"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="experiencias" class="exp-seccion py-5">
+  <div class="container py-lg-4">
+
+    <div class=" exp-cabecera d-flex flex-colum flex-lg-row justify-content-between align-items-lg-end gap-4 pb-4">
+      <div>
+        <p class="exp-etiqueta mb-2">Elige tu manera de vivirlo</p>
+        <h2 class="exp-titulo mb-0">Todo empieza aquí</h2>
+      </div>
+
+      <div class="exp-filtros d-flex gap-2">
+        @for (cat of categorias; track cat){
+          <button type="button" class="exp-filtro" [class.activo]="categoria === cat"
+                  (click)="filtrar(cat)">{{ cat }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="row g-4 gy-5 mt-0">
+      @for (exp of experienciasVisibles; track exp.id; let i = $index){
+        <div class="col-12" [class.col-lg-8]="esDestacada(i)" [class.col-md-6]="!esDestacada(i)"
+             [class.col-lg-4]="!esDestacada(i)">
+
+          <article class="exp-card">
+            <div class="exp-foto position-relative overflow-hidden" [class.exp-foto-grnade]="esDestacada(i)">
+              <img class="w-100 h-100 object-fit.cover" [src]="exp.imagen" [alt]="exp.titulo">
+              <span class="exp-categoria">{{ exp.categoria }}</span>
+
+              <button type="button" class="exp-fav" [class.guardada]="estaGuardada(exp.id)"
+                      [attr.aria-label]="estaGuardada(exp.id) ? 'Quitar de favoritos' : 'Guardar en favoritos'"
+                      (click)="alternarGuardada(exp.id)"><i class="bit" [class.bit-heart]="!estaGuardada(exp.id)"
+                                                            [class.bi-heart-fill]="estaGuardada(exp.id)"></i>
+              </button>
+
+              @if (esDestacada(i)){
+                <span class="exp-favorita">Favorita de la casa</span>
+              }
+            </div>
+
+            <div class="pt-4">
+              <div class="exp-meta d-flex align-items-center gap-4 mb-3">
+                <span><i class="bi bi-clock me-2"></i>{{ exp.duracion }}</span>
+                <span><i class="bi bi-people me-2"></i>{{ exp.personas }}</span>
+              </div>
+
+              <h5 class="card-title fw-bold mb-2">{{ exp.titulo }}</h5>
+              <p class="text-muted small mb-0">{{ exp.descripcion }}</p>
+
+              <div class="exp-card-pie d-flex justify-content-between align-items-center mt-4 pt-3">
+                <span class="fw-bold text-dark">{{ exp.precio }}</span>
+                <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" (click)="verExperiencia(exp.id)">Ver experiencia</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+  <div *ngIf="experienciaSeleccionada as seleccionada" class="exp-detalle panel mt-4 p-4" role="dialog" aria-live="polite" [attr.aria-label]="'Detalle de ' + seleccionada.titulo">
+    <div class="d-flex justify-content-between align-items-start gap-3">
+      <div><p class="exp-etiqueta mb-2">{{seleccionada.categoria}} · {{seleccionada.duracion}}</p><h3>{{seleccionada.titulo}}</h3><p>{{seleccionada.descripcion}}</p><p class="fw-bold">{{seleccionada.precio}} · {{seleccionada.personas}}</p></div>
+      <button type="button" class="btn btn-outline-dark" (click)="cerrarDetalle()" aria-label="Cerrar detalle">Cerrar</button>
+    </div>
+    <a routerLink="/alojamientos" class="btn btn-dark rounded-pill">Explorar alojamientos</a>
+  </div>
+</section>
+
+<section class="py-4 py-lg-5">
+  <div class="container">
+    <div class="exp-medida row g-0 overflow-hidden text-white">
+
+      <div class="exp-medida-foto col-lg-6">
+        <img alt="Mujer paseando bajo un olivo"
+             src="https://images.unsplash.com/photo-1790693843067-c7d41d99f066?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1200">
+      </div>
+
+      <div class="col-lg-6 d-flex flex-column justify-content-center p-4 p-md-5">
+        <p class="exp-medida-etiqueta mb-3">Hechas a tu medida</p>
+        <h2 class="exp-medida-titulo">¿No encuentas tu plan perfecto?</h2>
+        <p class="exp-medida-texto mt-3 mb-0">Cuéntanos cómo imaginas tus días. Nuestro equipo local puede combinar
+          varias propuestas o crear una experiencia privada solo para ti.</p>
+        <a routerLink="/contacto" class="exp-medida-link mt-4">Habla con nuestro equipo <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="exp-cta text-center py-5">
+  <div class="container py-lg-4">
+    <i class="bi bi-stars exp-cta-icono"></i>
+    <h2 class="exp-cta-titulo mt-3">Tu estancia, a tu manera.</h2>
+    <p class="exp.cta-texto mx-auto mt-3 mb-0">Reserva tu alojamiento y añade todas las expetiencias que quieras antes de
+      llegar.</p>
+    <a routerLink="/alojamientos" class="exp-boton mt-4">Ver alojamientos <i class="bi bi-arrow-right"></i></a>
+  </div>
+</section>
