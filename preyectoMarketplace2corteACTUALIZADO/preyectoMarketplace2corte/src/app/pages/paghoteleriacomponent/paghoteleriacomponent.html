@@ -1,0 +1,753 @@
+<!-- ============ HERO ============ -->
+<header class="hotel-hero position-relative overflow-hidden text-white text-center">
+  <img class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+       alt="Casa mediterránea blanca rodeada de naturaleza"
+       src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=2000">
+  <div class="hotel-hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+  <div class="container position-relative">
+    <h1 class="hotel-hero-titulo mx-auto mb-4">Encuentra un lugar que se sienta tuyo.</h1>
+    <p class="hotel-hero-texto mx-auto mb-0">
+      Casas especiales, anfitriones cercanos y rincones que merece la pena conocer.
+    </p>
+  </div>
+</header>
+
+<!-- ============ BUSCADOR (solo grafiquito ) ============ -->
+<div class="container hotel-busqueda-wrap">
+  <div class="hotel-busqueda row g-0 bg-white shadow-lg">
+
+    <label class="hotel-campo col-12 col-md-3 d-flex align-items-center gap-3 px-4 py-3">
+      <i class="bi bi-search"></i>
+      <span class="flex-grow-1">
+        <span class="hotel-campo-etq d-block">¿Adónde vas?</span>
+        <input type="text" placeholder="Ciudad, costa o montaña">
+      </span>
+    </label>
+
+    <label class="hotel-campo col-12 col-md-2 d-flex align-items-center gap-3 px-4 py-3">
+      <i class="bi bi-calendar-event"></i>
+      <span class="flex-grow-1">
+        <span class="hotel-campo-etq d-block">Llegada</span>
+        <input type="date">
+      </span>
+    </label>
+
+    <label class="hotel-campo col-12 col-md-2 d-flex align-items-center gap-3 px-4 py-3">
+      <i class="bi bi-calendar-event"></i>
+      <span class="flex-grow-1">
+        <span class="hotel-campo-etq d-block">Salida</span>
+        <input type="date">
+      </span>
+    </label>
+
+    <label class="hotel-campo col-12 col-md-2 d-flex align-items-center gap-3 px-4 py-3">
+      <i class="bi bi-people"></i>
+      <span class="flex-grow-1">
+        <span class="hotel-campo-etq d-block">Viajeros</span>
+        <select>
+          <option>1 huésped</option>
+          <option selected>2 huéspedes</option>
+          <option>3 huéspedes</option>
+          <option>4 huéspedes</option>
+          <option>5+ huéspedes</option>
+        </select>
+      </span>
+    </label>
+
+    <div class="col-12 col-md-3 d-grid p-2">
+      <button type="button" class="hotel-boton"><i class="bi bi-search me-2"></i>Buscar</button>
+    </div>
+
+  </div>
+</div>
+
+<section id="resultados" class="py-5">
+  <div class="container py-lg-4">
+
+    <input type="radio" name="filtro-hotel" id="f-todos" class="hotel-radio" checked>
+    <input type="radio" name="filtro-hotel" id="f-ciudad" class="hotel-radio">
+    <input type="radio" name="filtro-hotel" id="f-costa" class="hotel-radio">
+    <input type="radio" name="filtro-hotel" id="f-naturaleza" class="hotel-radio">
+    <input type="radio" name="filtro-hotel" id="f-piscina" class="hotel-radio">
+
+    <div class="hotel-cabecera pb-4">
+      <p class="hotel-etiqueta mb-2">Seleccionados uno a uno</p>
+      <h2 class="hotel-titulo mb-4">Alojamientos para descubrir sin prisa</h2>
+      <div class="hotel-filtros d-flex gap-2">
+        <label class="hotel-filtro" for="f-todos">Todos</label>
+        <label class="hotel-filtro" for="f-ciudad">Ciudad</label>
+        <label class="hotel-filtro" for="f-costa">Costa</label>
+        <label class="hotel-filtro" for="f-naturaleza">Naturaleza</label>
+        <label class="hotel-filtro" for="f-piscina">Piscina</label>
+      </div>
+    </div>
+
+    <div class="row g-4 gy-5 mt-0">
+
+
+      <div class="hotel-item col-12 col-sm-6 col-lg-4" data-cat="costa">
+        <article class="hotel-card">
+          <div class="hotel-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80" alt="Casa Serena">
+            <span class="hotel-badge">Favorito de huéspedes</span>
+            <input type="checkbox" id="fav-h1" class="hotel-fav-check">
+            <label for="fav-h1" class="hotel-fav" aria-label="Guardar en favoritos"><i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i></label>
+          </div>
+          <div class="pt-3">
+            <div class="d-flex justify-content-between align-items-start gap-3">
+              <div><p class="hotel-tipo mb-1">Casa mediterránea</p><h5 class="card-title fw-bold mb-0">Casa Serena</h5></div>
+              <span class="text-warning fw-bold text-nowrap"><i class="bi bi-star-fill"></i> 4.96</span>
+            </div>
+            <p class="text-muted small mt-2 mb-1">Jávea, Alicante</p>
+            <p class="text-muted small mb-0">6 huéspedes · 3 dormitorios</p>
+            <div class="hotel-pie d-flex justify-content-between align-items-center mt-3 pt-3">
+              <span><span class="fw-bold text-dark">$270 USD</span><span class="text-muted small"> / noche</span></span>
+              <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detalle-1">Ver más</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="hotel-item col-12 col-sm-6 col-lg-4" data-cat="naturaleza">
+        <article class="hotel-card">
+          <div class="hotel-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1631724953362-965648cc302c?auto=format&fit=crop&w=1000&q=80" alt="La Casita del Bosque">
+            <span class="hotel-badge">Escapada perfecta</span>
+            <input type="checkbox" id="fav-h2" class="hotel-fav-check">
+            <label for="fav-h2" class="hotel-fav" aria-label="Guardar en favoritos"><i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i></label>
+          </div>
+          <div class="pt-3">
+            <div class="d-flex justify-content-between align-items-start gap-3">
+              <div><p class="hotel-tipo mb-1">Cabaña rural</p><h5 class="card-title fw-bold mb-0">La Casita del Bosque</h5></div>
+              <span class="text-warning fw-bold text-nowrap"><i class="bi bi-star-fill"></i> 4.91</span>
+            </div>
+            <p class="text-muted small mt-2 mb-1">Cangas de Onís, Asturias</p>
+            <p class="text-muted small mb-0">2 huéspedes · 1 dormitorio</p>
+            <div class="hotel-pie d-flex justify-content-between align-items-center mt-3 pt-3">
+              <span><span class="fw-bold text-dark">$150 USD</span><span class="text-muted small"> / noche</span></span>
+              <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detalle-2">Ver más</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="hotel-item col-12 col-sm-6 col-lg-4" data-cat="piscina">
+        <article class="hotel-card">
+          <div class="hotel-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1633368098496-be7b5571547c?auto=format&fit=crop&w=1000&q=80" alt="Patio de Luz">
+            <span class="hotel-badge">Selección Lumbre</span>
+            <input type="checkbox" id="fav-h3" class="hotel-fav-check">
+            <label for="fav-h3" class="hotel-fav" aria-label="Guardar en favoritos"><i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i></label>
+          </div>
+          <div class="pt-3">
+            <div class="d-flex justify-content-between align-items-start gap-3">
+              <div><p class="hotel-tipo mb-1">Villa con piscina</p><h5 class="card-title fw-bold mb-0">Patio de Luz</h5></div>
+              <span class="text-warning fw-bold text-nowrap"><i class="bi bi-star-fill"></i> 4.98</span>
+            </div>
+            <p class="text-muted small mt-2 mb-1">Sóller, Mallorca</p>
+            <p class="text-muted small mb-0">8 huéspedes · 4 dormitorios</p>
+            <div class="hotel-pie d-flex justify-content-between align-items-center mt-3 pt-3">
+              <span><span class="fw-bold text-dark">$410 USD</span><span class="text-muted small"> / noche</span></span>
+              <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detalle-3">Ver más</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="hotel-item col-12 col-sm-6 col-lg-4" data-cat="costa">
+        <article class="hotel-card">
+          <div class="hotel-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1615839130907-2f68ca162d44?auto=format&fit=crop&w=1000&q=80" alt="Calma Blanca">
+            <input type="checkbox" id="fav-h4" class="hotel-fav-check">
+            <label for="fav-h4" class="hotel-fav" aria-label="Guardar en favoritos"><i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i></label>
+          </div>
+          <div class="pt-3">
+            <div class="d-flex justify-content-between align-items-start gap-3">
+              <div><p class="hotel-tipo mb-1">Casa junto al mar</p><h5 class="card-title fw-bold mb-0">Calma Blanca</h5></div>
+              <span class="text-warning fw-bold text-nowrap"><i class="bi bi-star-fill"></i> 4.89</span>
+            </div>
+            <p class="text-muted small mt-2 mb-1">Tarifa, Cádiz</p>
+            <p class="text-muted small mb-0">4 huéspedes · 2 dormitorios</p>
+            <div class="hotel-pie d-flex justify-content-between align-items-center mt-3 pt-3">
+              <span><span class="fw-bold text-dark">$215 USD</span><span class="text-muted small"> / noche</span></span>
+              <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detalle-4">Ver más</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="hotel-item col-12 col-sm-6 col-lg-4" data-cat="naturaleza">
+        <article class="hotel-card">
+          <div class="hotel-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1693390562843-842f979a1787?auto=format&fit=crop&w=1000&q=80" alt="El Refugio">
+            <span class="hotel-badge">Muy solicitado</span>
+            <input type="checkbox" id="fav-h5" class="hotel-fav-check">
+            <label for="fav-h5" class="hotel-fav" aria-label="Guardar en favoritos"><i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i></label>
+          </div>
+          <div class="pt-3">
+            <div class="d-flex justify-content-between align-items-start gap-3">
+              <div><p class="hotel-tipo mb-1">Casa de campo</p><h5 class="card-title fw-bold mb-0">El Refugio</h5></div>
+              <span class="text-warning fw-bold text-nowrap"><i class="bi bi-star-fill"></i> 4.94</span>
+            </div>
+            <p class="text-muted small mt-2 mb-1">La Garrotxa, Girona</p>
+            <p class="text-muted small mb-0">5 huéspedes · 2 dormitorios</p>
+            <div class="hotel-pie d-flex justify-content-between align-items-center mt-3 pt-3">
+              <span><span class="fw-bold text-dark">$190 USD</span><span class="text-muted small"> / noche</span></span>
+              <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detalle-5">Ver más</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="hotel-item col-12 col-sm-6 col-lg-4" data-cat="costa">
+        <article class="hotel-card">
+          <div class="hotel-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1572372547964-623fff22caa3?auto=format&fit=crop&w=1000&q=80" alt="Can Terra">
+            <input type="checkbox" id="fav-h6" class="hotel-fav-check">
+            <label for="fav-h6" class="hotel-fav" aria-label="Guardar en favoritos"><i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i></label>
+          </div>
+          <div class="pt-3">
+            <div class="d-flex justify-content-between align-items-start gap-3">
+              <div><p class="hotel-tipo mb-1">Finca tradicional</p><h5 class="card-title fw-bold mb-0">Can Terra</h5></div>
+              <span class="text-warning fw-bold text-nowrap"><i class="bi bi-star-fill"></i> 4.97</span>
+            </div>
+            <p class="text-muted small mt-2 mb-1">Ciutadella, Menorca</p>
+            <p class="text-muted small mb-0">6 huéspedes · 3 dormitorios</p>
+            <div class="hotel-pie d-flex justify-content-between align-items-center mt-3 pt-3">
+              <span><span class="fw-bold text-dark">$315 USD</span><span class="text-muted small"> / noche</span></span>
+              <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detalle-6">Ver más</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="hotel-item col-12 col-sm-6 col-lg-4" data-cat="ciudad">
+        <article class="hotel-card">
+          <div class="hotel-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80" alt="Dubái">
+            <span class="hotel-badge">Popular</span>
+            <input type="checkbox" id="fav-h7" class="hotel-fav-check">
+            <label for="fav-h7" class="hotel-fav" aria-label="Guardar en favoritos"><i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i></label>
+          </div>
+          <div class="pt-3">
+            <div class="d-flex justify-content-between align-items-start gap-3">
+              <div><p class="hotel-tipo mb-1">Destino destacado</p><h5 class="card-title fw-bold mb-0">Dubái</h5></div>
+              <span class="text-warning fw-bold text-nowrap"><i class="bi bi-star-fill"></i> 4.9</span>
+            </div>
+            <p class="text-muted small mt-2 mb-1">Emiratos Árabes</p>
+            <p class="text-muted small mb-0">Lujo, arquitectura moderna y experiencias desérticas inolvidables.</p>
+            <div class="hotel-pie d-flex justify-content-between align-items-center mt-3 pt-3">
+              <span><span class="fw-bold text-dark">$450 USD</span><span class="text-muted small"> / noche</span></span>
+              <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detalle-7">Ver más</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="hotel-item col-12 col-sm-6 col-lg-4" data-cat="ciudad">
+        <article class="hotel-card">
+          <div class="hotel-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1000&q=80" alt="París">
+            <span class="hotel-badge">Tendencia</span>
+            <input type="checkbox" id="fav-h8" class="hotel-fav-check">
+            <label for="fav-h8" class="hotel-fav" aria-label="Guardar en favoritos"><i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i></label>
+          </div>
+          <div class="pt-3">
+            <div class="d-flex justify-content-between align-items-start gap-3">
+              <div><p class="hotel-tipo mb-1">Destino destacado</p><h5 class="card-title fw-bold mb-0">París</h5></div>
+              <span class="text-warning fw-bold text-nowrap"><i class="bi bi-star-fill"></i> 4.8</span>
+            </div>
+            <p class="text-muted small mt-2 mb-1">Francia</p>
+            <p class="text-muted small mb-0">La ciudad del amor, arte, historia y una gastronomía excepcional.</p>
+            <div class="hotel-pie d-flex justify-content-between align-items-center mt-3 pt-3">
+              <span><span class="fw-bold text-dark">$380 USD</span><span class="text-muted small"> / noche</span></span>
+              <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detalle-8">Ver más</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="hotel-item col-12 col-sm-6 col-lg-4" data-cat="costa">
+        <article class="hotel-card">
+          <div class="hotel-foto position-relative overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="PEGA_AQUI_TU_URL_DE_CARTAGENA" alt="Cartagena">
+            <span class="hotel-badge">Recomendado</span>
+            <input type="checkbox" id="fav-h9" class="hotel-fav-check">
+            <label for="fav-h9" class="hotel-fav" aria-label="Guardar en favoritos"><i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i></label>
+          </div>
+          <div class="pt-3">
+            <div class="d-flex justify-content-between align-items-start gap-3">
+              <div><p class="hotel-tipo mb-1">Destino destacado</p><h5 class="card-title fw-bold mb-0">Cartagena</h5></div>
+              <span class="text-warning fw-bold text-nowrap"><i class="bi bi-star-fill"></i> 4.9</span>
+            </div>
+            <p class="text-muted small mt-2 mb-1">Colombia</p>
+            <p class="text-muted small mb-0">Magia caribeña, arquitectura colonial y hermosas playas tropicales.</p>
+            <div class="hotel-pie d-flex justify-content-between align-items-center mt-3 pt-3">
+              <span><span class="fw-bold text-dark">$220 USD</span><span class="text-muted small"> / noche</span></span>
+              <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detalle-9">Ver más</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="modal fade" id="detalle-1" tabindex="-1" aria-labelledby="detalle-1-t" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content hotel-modal">
+      <div class="modal-header border-0 pb-0">
+        <div>
+          <p class="hotel-tipo mb-1">Casa mediterránea</p>
+          <h2 class="hotel-modal-titulo mb-1" id="detalle-1-t">Casa Serena</h2>
+          <p class="text-muted mb-0">Jávea, Alicante · <i class="bi bi-star-fill text-warning"></i> <strong>4.96</strong> · 84 evaluaciones</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="hotel-galeria mb-5">
+          <img class="hotel-gal-principal" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80" alt="Casa Serena">
+          <span class="hotel-gal g1"></span><span class="hotel-gal g2"></span><span class="hotel-gal g3"></span><span class="hotel-gal g4"></span>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 pb-4 hotel-linea">
+              <div><h3 class="h4 fw-bold">Tu alojamiento en Jávea</h3><p class="text-muted mb-0">6 huéspedes · 3 dormitorios · 2 baños</p></div>
+              <span class="badge bg-danger align-self-start px-3 py-2">Favorito de huéspedes</span>
+            </div>
+            <p class="py-4 mb-0 hotel-linea">Un lugar pensado para bajar el ritmo. La luz entra durante todo el día y cada espacio combina materiales naturales con detalles escogidos por artesanos locales. Disfruta de privacidad, comodidad y todo lo necesario para sentirte como en casa.</p>
+            <h3 class="h5 fw-bold mt-4 mb-4">Lo que ofrece este alojamiento</h3>
+            <ul class="hotel-servicios">
+              <li>Piscina privada</li><li>Wifi de alta velocidad</li>
+              <li>Cocina equipada</li><li>Aire acondicionado</li>
+              <li>Estacionamiento gratuito</li><li>Terraza y jardín</li>
+              <li>Lavadora</li><li>Productos locales de bienvenida</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <aside class="hotel-reserva p-4">
+              <p class="mb-4"><span class="fs-3 fw-bold">$270 USD</span><span class="text-muted"> / noche</span></p>
+              <div class="row g-2 mb-3">
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Llegada</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Salida</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-12"><label class="form-label small fw-bold mb-1">Huéspedes</label><select class="form-select form-select-sm"><option>1 huésped</option><option selected>2 huéspedes</option><option>4 huéspedes</option><option>6 huéspedes</option></select></div>
+              </div>
+              <button type="button" class="btn btn-danger w-100 fw-bold py-2">Comprobar disponibilidad</button>
+              <p class="text-center text-muted small mt-3 mb-0">Todavía no se te cobrará nada</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detalle-2" tabindex="-1" aria-labelledby="detalle-2-t" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content hotel-modal">
+      <div class="modal-header border-0 pb-0">
+        <div>
+          <p class="hotel-tipo mb-1">Cabaña rural</p>
+          <h2 class="hotel-modal-titulo mb-1" id="detalle-2-t">La Casita del Bosque</h2>
+          <p class="text-muted mb-0">Cangas de Onís, Asturias · <i class="bi bi-star-fill text-warning"></i> <strong>4.91</strong> · 112 evaluaciones</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="hotel-galeria mb-5">
+          <img class="hotel-gal-principal" src="https://images.unsplash.com/photo-1631724953362-965648cc302c?auto=format&fit=crop&w=1000&q=80" alt="La Casita del Bosque">
+          <span class="hotel-gal g1"></span><span class="hotel-gal g2"></span><span class="hotel-gal g3"></span><span class="hotel-gal g4"></span>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 pb-4 hotel-linea">
+              <div><h3 class="h4 fw-bold">Tu alojamiento en Cangas de Onís</h3><p class="text-muted mb-0">2 huéspedes · 1 dormitorio · 2 baños</p></div>
+              <span class="badge bg-danger align-self-start px-3 py-2">Escapada perfecta</span>
+            </div>
+            <p class="py-4 mb-0 hotel-linea">Un lugar pensado para bajar el ritmo. La luz entra durante todo el día y cada espacio combina materiales naturales con detalles escogidos por artesanos locales. Disfruta de privacidad, comodidad y todo lo necesario para sentirte como en casa.</p>
+            <h3 class="h5 fw-bold mt-4 mb-4">Lo que ofrece este alojamiento</h3>
+            <ul class="hotel-servicios">
+              <li>Piscina privada</li><li>Wifi de alta velocidad</li>
+              <li>Cocina equipada</li><li>Aire acondicionado</li>
+              <li>Estacionamiento gratuito</li><li>Terraza y jardín</li>
+              <li>Lavadora</li><li>Productos locales de bienvenida</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <aside class="hotel-reserva p-4">
+              <p class="mb-4"><span class="fs-3 fw-bold">$150 USD</span><span class="text-muted"> / noche</span></p>
+              <div class="row g-2 mb-3">
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Llegada</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Salida</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-12"><label class="form-label small fw-bold mb-1">Huéspedes</label><select class="form-select form-select-sm"><option>1 huésped</option><option selected>2 huéspedes</option><option>4 huéspedes</option><option>6 huéspedes</option></select></div>
+              </div>
+              <button type="button" class="btn btn-danger w-100 fw-bold py-2">Comprobar disponibilidad</button>
+              <p class="text-center text-muted small mt-3 mb-0">Todavía no se te cobrará nada</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detalle-3" tabindex="-1" aria-labelledby="detalle-3-t" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content hotel-modal">
+      <div class="modal-header border-0 pb-0">
+        <div>
+          <p class="hotel-tipo mb-1">Villa con piscina</p>
+          <h2 class="hotel-modal-titulo mb-1" id="detalle-3-t">Patio de Luz</h2>
+          <p class="text-muted mb-0">Sóller, Mallorca · <i class="bi bi-star-fill text-warning"></i> <strong>4.98</strong> · 46 evaluaciones</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="hotel-galeria mb-5">
+          <img class="hotel-gal-principal" src="https://images.unsplash.com/photo-1633368098496-be7b5571547c?auto=format&fit=crop&w=1000&q=80" alt="Patio de Luz">
+          <span class="hotel-gal g1"></span><span class="hotel-gal g2"></span><span class="hotel-gal g3"></span><span class="hotel-gal g4"></span>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 pb-4 hotel-linea">
+              <div><h3 class="h4 fw-bold">Tu alojamiento en Sóller</h3><p class="text-muted mb-0">8 huéspedes · 4 dormitorios · 2 baños</p></div>
+              <span class="badge bg-danger align-self-start px-3 py-2">Selección Lumbre</span>
+            </div>
+            <p class="py-4 mb-0 hotel-linea">Un lugar pensado para bajar el ritmo. La luz entra durante todo el día y cada espacio combina materiales naturales con detalles escogidos por artesanos locales. Disfruta de privacidad, comodidad y todo lo necesario para sentirte como en casa.</p>
+            <h3 class="h5 fw-bold mt-4 mb-4">Lo que ofrece este alojamiento</h3>
+            <ul class="hotel-servicios">
+              <li>Piscina privada</li><li>Wifi de alta velocidad</li>
+              <li>Cocina equipada</li><li>Aire acondicionado</li>
+              <li>Estacionamiento gratuito</li><li>Terraza y jardín</li>
+              <li>Lavadora</li><li>Productos locales de bienvenida</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <aside class="hotel-reserva p-4">
+              <p class="mb-4"><span class="fs-3 fw-bold">$410 USD</span><span class="text-muted"> / noche</span></p>
+              <div class="row g-2 mb-3">
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Llegada</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Salida</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-12"><label class="form-label small fw-bold mb-1">Huéspedes</label><select class="form-select form-select-sm"><option>1 huésped</option><option selected>2 huéspedes</option><option>4 huéspedes</option><option>6 huéspedes</option></select></div>
+              </div>
+              <button type="button" class="btn btn-danger w-100 fw-bold py-2">Comprobar disponibilidad</button>
+              <p class="text-center text-muted small mt-3 mb-0">Todavía no se te cobrará nada</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detalle-4" tabindex="-1" aria-labelledby="detalle-4-t" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content hotel-modal">
+      <div class="modal-header border-0 pb-0">
+        <div>
+          <p class="hotel-tipo mb-1">Casa junto al mar</p>
+          <h2 class="hotel-modal-titulo mb-1" id="detalle-4-t">Calma Blanca</h2>
+          <p class="text-muted mb-0">Tarifa, Cádiz · <i class="bi bi-star-fill text-warning"></i> <strong>4.89</strong> · 67 evaluaciones</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="hotel-galeria mb-5">
+          <img class="hotel-gal-principal" src="https://images.unsplash.com/photo-1615839130907-2f68ca162d44?auto=format&fit=crop&w=1000&q=80" alt="Calma Blanca">
+          <span class="hotel-gal g1"></span><span class="hotel-gal g2"></span><span class="hotel-gal g3"></span><span class="hotel-gal g4"></span>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="pb-4 hotel-linea">
+              <h3 class="h4 fw-bold">Tu alojamiento en Tarifa</h3><p class="text-muted mb-0">4 huéspedes · 2 dormitorios · 2 baños</p>
+            </div>
+            <p class="py-4 mb-0 hotel-linea">Un lugar pensado para bajar el ritmo. La luz entra durante todo el día y cada espacio combina materiales naturales con detalles escogidos por artesanos locales. Disfruta de privacidad, comodidad y todo lo necesario para sentirte como en casa.</p>
+            <h3 class="h5 fw-bold mt-4 mb-4">Lo que ofrece este alojamiento</h3>
+            <ul class="hotel-servicios">
+              <li>Piscina privada</li><li>Wifi de alta velocidad</li>
+              <li>Cocina equipada</li><li>Aire acondicionado</li>
+              <li>Estacionamiento gratuito</li><li>Terraza y jardín</li>
+              <li>Lavadora</li><li>Productos locales de bienvenida</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <aside class="hotel-reserva p-4">
+              <p class="mb-4"><span class="fs-3 fw-bold">$215 USD</span><span class="text-muted"> / noche</span></p>
+              <div class="row g-2 mb-3">
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Llegada</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Salida</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-12"><label class="form-label small fw-bold mb-1">Huéspedes</label><select class="form-select form-select-sm"><option>1 huésped</option><option selected>2 huéspedes</option><option>4 huéspedes</option><option>6 huéspedes</option></select></div>
+              </div>
+              <button type="button" class="btn btn-danger w-100 fw-bold py-2">Comprobar disponibilidad</button>
+              <p class="text-center text-muted small mt-3 mb-0">Todavía no se te cobrará nada</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detalle-5" tabindex="-1" aria-labelledby="detalle-5-t" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content hotel-modal">
+      <div class="modal-header border-0 pb-0">
+        <div>
+          <p class="hotel-tipo mb-1">Casa de campo</p>
+          <h2 class="hotel-modal-titulo mb-1" id="detalle-5-t">El Refugio</h2>
+          <p class="text-muted mb-0">La Garrotxa, Girona · <i class="bi bi-star-fill text-warning"></i> <strong>4.94</strong> · 91 evaluaciones</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="hotel-galeria mb-5">
+          <img class="hotel-gal-principal" src="https://images.unsplash.com/photo-1693390562843-842f979a1787?auto=format&fit=crop&w=1000&q=80" alt="El Refugio">
+          <span class="hotel-gal g1"></span><span class="hotel-gal g2"></span><span class="hotel-gal g3"></span><span class="hotel-gal g4"></span>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 pb-4 hotel-linea">
+              <div><h3 class="h4 fw-bold">Tu alojamiento en La Garrotxa</h3><p class="text-muted mb-0">5 huéspedes · 2 dormitorios · 2 baños</p></div>
+              <span class="badge bg-danger align-self-start px-3 py-2">Muy solicitado</span>
+            </div>
+            <p class="py-4 mb-0 hotel-linea">Un lugar pensado para bajar el ritmo. La luz entra durante todo el día y cada espacio combina materiales naturales con detalles escogidos por artesanos locales. Disfruta de privacidad, comodidad y todo lo necesario para sentirte como en casa.</p>
+            <h3 class="h5 fw-bold mt-4 mb-4">Lo que ofrece este alojamiento</h3>
+            <ul class="hotel-servicios">
+              <li>Piscina privada</li><li>Wifi de alta velocidad</li>
+              <li>Cocina equipada</li><li>Aire acondicionado</li>
+              <li>Estacionamiento gratuito</li><li>Terraza y jardín</li>
+              <li>Lavadora</li><li>Productos locales de bienvenida</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <aside class="hotel-reserva p-4">
+              <p class="mb-4"><span class="fs-3 fw-bold">$190 USD</span><span class="text-muted"> / noche</span></p>
+              <div class="row g-2 mb-3">
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Llegada</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Salida</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-12"><label class="form-label small fw-bold mb-1">Huéspedes</label><select class="form-select form-select-sm"><option>1 huésped</option><option selected>2 huéspedes</option><option>4 huéspedes</option><option>6 huéspedes</option></select></div>
+              </div>
+              <button type="button" class="btn btn-danger w-100 fw-bold py-2">Comprobar disponibilidad</button>
+              <p class="text-center text-muted small mt-3 mb-0">Todavía no se te cobrará nada</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detalle-6" tabindex="-1" aria-labelledby="detalle-6-t" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content hotel-modal">
+      <div class="modal-header border-0 pb-0">
+        <div>
+          <p class="hotel-tipo mb-1">Finca tradicional</p>
+          <h2 class="hotel-modal-titulo mb-1" id="detalle-6-t">Can Terra</h2>
+          <p class="text-muted mb-0">Ciutadella, Menorca · <i class="bi bi-star-fill text-warning"></i> <strong>4.97</strong> · 52 evaluaciones</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="hotel-galeria mb-5">
+          <img class="hotel-gal-principal" src="https://images.unsplash.com/photo-1572372547964-623fff22caa3?auto=format&fit=crop&w=1000&q=80" alt="Can Terra">
+          <span class="hotel-gal g1"></span><span class="hotel-gal g2"></span><span class="hotel-gal g3"></span><span class="hotel-gal g4"></span>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="pb-4 hotel-linea">
+              <h3 class="h4 fw-bold">Tu alojamiento en Ciutadella</h3><p class="text-muted mb-0">6 huéspedes · 3 dormitorios · 2 baños</p>
+            </div>
+            <p class="py-4 mb-0 hotel-linea">Un lugar pensado para bajar el ritmo. La luz entra durante todo el día y cada espacio combina materiales naturales con detalles escogidos por artesanos locales. Disfruta de privacidad, comodidad y todo lo necesario para sentirte como en casa.</p>
+            <h3 class="h5 fw-bold mt-4 mb-4">Lo que ofrece este alojamiento</h3>
+            <ul class="hotel-servicios">
+              <li>Piscina privada</li><li>Wifi de alta velocidad</li>
+              <li>Cocina equipada</li><li>Aire acondicionado</li>
+              <li>Estacionamiento gratuito</li><li>Terraza y jardín</li>
+              <li>Lavadora</li><li>Productos locales de bienvenida</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <aside class="hotel-reserva p-4">
+              <p class="mb-4"><span class="fs-3 fw-bold">$315 USD</span><span class="text-muted"> / noche</span></p>
+              <div class="row g-2 mb-3">
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Llegada</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Salida</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-12"><label class="form-label small fw-bold mb-1">Huéspedes</label><select class="form-select form-select-sm"><option>1 huésped</option><option selected>2 huéspedes</option><option>4 huéspedes</option><option>6 huéspedes</option></select></div>
+              </div>
+              <button type="button" class="btn btn-danger w-100 fw-bold py-2">Comprobar disponibilidad</button>
+              <p class="text-center text-muted small mt-3 mb-0">Todavía no se te cobrará nada</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detalle-7" tabindex="-1" aria-labelledby="detalle-7-t" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content hotel-modal">
+      <div class="modal-header border-0 pb-0">
+        <div>
+          <p class="hotel-tipo mb-1">Destino destacado</p>
+          <h2 class="hotel-modal-titulo mb-1" id="detalle-7-t">Dubái</h2>
+          <p class="text-muted mb-0">Emiratos Árabes · <i class="bi bi-star-fill text-warning"></i> <strong>4.9</strong> · 120 evaluaciones</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="hotel-galeria mb-5">
+          <img class="hotel-gal-principal" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80" alt="Dubái">
+          <span class="hotel-gal g1"></span><span class="hotel-gal g2"></span><span class="hotel-gal g3"></span><span class="hotel-gal g4"></span>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 pb-4 hotel-linea">
+              <div><h3 class="h4 fw-bold">Tu alojamiento en Dubái</h3><p class="text-muted mb-0">Lujo, arquitectura moderna y experiencias desérticas inolvidables.</p></div>
+              <span class="badge bg-danger align-self-start px-3 py-2">Popular</span>
+            </div>
+            <p class="py-4 mb-0 hotel-linea">Un lugar pensado para bajar el ritmo. La luz entra durante todo el día y cada espacio combina materiales naturales con detalles escogidos por artesanos locales. Disfruta de privacidad, comodidad y todo lo necesario para sentirte como en casa.</p>
+            <h3 class="h5 fw-bold mt-4 mb-4">Lo que ofrece este alojamiento</h3>
+            <ul class="hotel-servicios">
+              <li>Piscina privada</li><li>Wifi de alta velocidad</li>
+              <li>Cocina equipada</li><li>Aire acondicionado</li>
+              <li>Estacionamiento gratuito</li><li>Terraza y jardín</li>
+              <li>Lavadora</li><li>Productos locales de bienvenida</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <aside class="hotel-reserva p-4">
+              <p class="mb-4"><span class="fs-3 fw-bold">$450 USD</span><span class="text-muted"> / noche</span></p>
+              <div class="row g-2 mb-3">
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Llegada</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Salida</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-12"><label class="form-label small fw-bold mb-1">Huéspedes</label><select class="form-select form-select-sm"><option>1 huésped</option><option selected>2 huéspedes</option><option>4 huéspedes</option><option>6 huéspedes</option></select></div>
+              </div>
+              <button type="button" class="btn btn-danger w-100 fw-bold py-2">Comprobar disponibilidad</button>
+              <p class="text-center text-muted small mt-3 mb-0">Todavía no se te cobrará nada</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detalle-8" tabindex="-1" aria-labelledby="detalle-8-t" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content hotel-modal">
+      <div class="modal-header border-0 pb-0">
+        <div>
+          <p class="hotel-tipo mb-1">Destino destacado</p>
+          <h2 class="hotel-modal-titulo mb-1" id="detalle-8-t">París</h2>
+          <p class="text-muted mb-0">Francia · <i class="bi bi-star-fill text-warning"></i> <strong>4.8</strong> · 98 evaluaciones</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="hotel-galeria mb-5">
+          <img class="hotel-gal-principal" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1000&q=80" alt="París">
+          <span class="hotel-gal g1"></span><span class="hotel-gal g2"></span><span class="hotel-gal g3"></span><span class="hotel-gal g4"></span>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 pb-4 hotel-linea">
+              <div><h3 class="h4 fw-bold">Tu alojamiento en París</h3><p class="text-muted mb-0">La ciudad del amor, arte, historia y una gastronomía excepcional.</p></div>
+              <span class="badge bg-danger align-self-start px-3 py-2">Tendencia</span>
+            </div>
+            <p class="py-4 mb-0 hotel-linea">Un lugar pensado para bajar el ritmo. La luz entra durante todo el día y cada espacio combina materiales naturales con detalles escogidos por artesanos locales. Disfruta de privacidad, comodidad y todo lo necesario para sentirte como en casa.</p>
+            <h3 class="h5 fw-bold mt-4 mb-4">Lo que ofrece este alojamiento</h3>
+            <ul class="hotel-servicios">
+              <li>Piscina privada</li><li>Wifi de alta velocidad</li>
+              <li>Cocina equipada</li><li>Aire acondicionado</li>
+              <li>Estacionamiento gratuito</li><li>Terraza y jardín</li>
+              <li>Lavadora</li><li>Productos locales de bienvenida</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <aside class="hotel-reserva p-4">
+              <p class="mb-4"><span class="fs-3 fw-bold">$380 USD</span><span class="text-muted"> / noche</span></p>
+              <div class="row g-2 mb-3">
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Llegada</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Salida</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-12"><label class="form-label small fw-bold mb-1">Huéspedes</label><select class="form-select form-select-sm"><option>1 huésped</option><option selected>2 huéspedes</option><option>4 huéspedes</option><option>6 huéspedes</option></select></div>
+              </div>
+              <button type="button" class="btn btn-danger w-100 fw-bold py-2">Comprobar disponibilidad</button>
+              <p class="text-center text-muted small mt-3 mb-0">Todavía no se te cobrará nada</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detalle-9" tabindex="-1" aria-labelledby="detalle-9-t" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content hotel-modal">
+      <div class="modal-header border-0 pb-0">
+        <div>
+          <p class="hotel-tipo mb-1">Destino destacado</p>
+          <h2 class="hotel-modal-titulo mb-1" id="detalle-9-t">Cartagena</h2>
+          <p class="text-muted mb-0">Colombia · <i class="bi bi-star-fill text-warning"></i> <strong>4.9</strong> · 76 evaluaciones</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="hotel-galeria mb-5">
+          <img class="hotel-gal-principal" src="PEGA_AQUI_TU_URL_DE_CARTAGENA" alt="Cartagena">
+          <span class="hotel-gal g1"></span><span class="hotel-gal g2"></span><span class="hotel-gal g3"></span><span class="hotel-gal g4"></span>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 pb-4 hotel-linea">
+              <div><h3 class="h4 fw-bold">Tu alojamiento en Cartagena</h3><p class="text-muted mb-0">Magia caribeña, arquitectura colonial y hermosas playas tropicales.</p></div>
+              <span class="badge bg-danger align-self-start px-3 py-2">Recomendado</span>
+            </div>
+            <p class="py-4 mb-0 hotel-linea">Un lugar pensado para bajar el ritmo. La luz entra durante todo el día y cada espacio combina materiales naturales con detalles escogidos por artesanos locales. Disfruta de privacidad, comodidad y todo lo necesario para sentirte como en casa.</p>
+            <h3 class="h5 fw-bold mt-4 mb-4">Lo que ofrece este alojamiento</h3>
+            <ul class="hotel-servicios">
+              <li>Piscina privada</li><li>Wifi de alta velocidad</li>
+              <li>Cocina equipada</li><li>Aire acondicionado</li>
+              <li>Estacionamiento gratuito</li><li>Terraza y jardín</li>
+              <li>Lavadora</li><li>Productos locales de bienvenida</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <aside class="hotel-reserva p-4">
+              <p class="mb-4"><span class="fs-3 fw-bold">$220 USD</span><span class="text-muted"> / noche</span></p>
+              <div class="row g-2 mb-3">
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Llegada</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-6"><label class="form-label small fw-bold mb-1">Salida</label><input type="date" class="form-control form-control-sm"></div>
+                <div class="col-12"><label class="form-label small fw-bold mb-1">Huéspedes</label><select class="form-select form-select-sm"><option>1 huésped</option><option selected>2 huéspedes</option><option>4 huéspedes</option><option>6 huéspedes</option></select></div>
+              </div>
+              <button type="button" class="btn btn-danger w-100 fw-bold py-2">Comprobar disponibilidad</button>
+              <p class="text-center text-muted small mt-3 mb-0">Todavía no se te cobrará nada</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
