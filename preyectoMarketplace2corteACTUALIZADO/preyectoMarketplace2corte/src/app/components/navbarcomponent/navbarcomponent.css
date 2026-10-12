@@ -1,0 +1,42 @@
+
+:host {
+  display: block;
+}
+
+.navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #f0f0f0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+
+.navbar-nav .nav-link {
+  color: #212529 !important;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #dc3545 !important;
+}
+
+.btn-dark {
+  background-color: #1a1a1a;
+  border: none;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.btn-dark:hover {
+  background-color: #000000;
+  transform: translateY(-1px);
+}
